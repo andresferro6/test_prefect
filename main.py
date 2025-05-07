@@ -3,6 +3,8 @@ import pandas as pd
 
 import random
 
+from base_functions import tasks
+
 @task
 def get_customer_ids() -> list[str]:
     # Fetch customer IDs from a database or API
@@ -15,8 +17,8 @@ def process_customer(customer_id: str) -> str:
 
 @flow
 def main() -> list[str]:
+    test = tasks.process_dataframe()
     customer_ids = get_customer_ids()
-    # Map the process_customer task across all customer IDs
     results = process_customer.map(customer_ids)
     return results
 
